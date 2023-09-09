@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(93, 146, 93);
+}
+
+.gameboard {
+    width: 320px;
+    height: 320px;
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.cells {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    background-color: antiquewhite;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.player-turn {
+    border: 2px solid black;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.header-info button {
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: rgb(159, 60, 60);
+    color: white;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.header-info button:hover {
+    background-color: white;
+    color: rgb(159, 60, 60);
+}
+
+.playerwin {
+    visibility: visible;
+    text-align: center;
+    width: 100%;
+    height: 70px;
+    border: 5px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.score-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.score {
+    font-size: 20px;
+    padding-top: 10px;
+    flex: 50%;
+}
+
+
+.circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 10px solid green;
+}
+
+.cross {
+    position: relative;
+    height: 90px;
+    width: 90px;
+    transform: rotate(45deg);
+}
+
+.cross::before, .cross::after {
+    content: "";
+    position: absolute;
+    background-color: red;
+}
+
+.cross::before {
+    left: 50%;
+    width: 30%;
+    margin-left: -15%;
+    height: 100%;
+}
+
+.cross::after {
+    top: 50%;
+    height: 30%;
+    margin-top: -15%;
+    width: 100%;
+}
