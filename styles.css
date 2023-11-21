@@ -9,15 +9,12 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(93, 146, 93);
 }
 
 .gameboard {
-    width: 320px;
-    height: 320px;
-    background-color: black;
-    border-radius: 10px;
-    padding: 10px;
+    width: 302px;
+    height: 302px;
+    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
 
@@ -26,8 +23,7 @@ body {
 .cells {
     width: 100px;
     height: 100px;
-    border: 2px solid black;
-    background-color: antiquewhite;
+    border: 1px solid black;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -35,47 +31,42 @@ body {
 }
 
 .header-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin: 1rem 0;
 }
 
 .player-turn {
-    border: 2px solid black;
-    padding: 5px 10px;
-    font-size: 20px;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid black;
     border-radius: 5px;
-    color: white;
 }
 
-.header-info button {
+.start {
     font-size: 20px;
     padding: 5px 10px;
-    background-color: rgb(159, 60, 60);
-    color: white;
     cursor: pointer;
-    border: 2px solid black;
+    border: 3px solid black;
+    background-color: white;
     border-radius: 5px;
+    margin-top: 1rem;
+    max-width: 320px;
+    width: 100%;
 }
 
-.header-info button:hover {
-    background-color: white;
-    color: rgb(159, 60, 60);
-}
+
 
 .playerwin {
-    visibility: visible;
+    visibility: hidden;
     text-align: center;
     width: 100%;
     height: 70px;
-    border: 5px solid black;
     border-radius: 10px;
     margin-top: 10px;
     padding: 10px;
     font-size: 30px;
     font-weight: bold;
-    color: white;
 }
 
 .score-container{
@@ -83,43 +74,43 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .score {
     font-size: 20px;
     padding-top: 10px;
     flex: 50%;
 }
 
-
 .circle {
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    border: 10px solid green;
+    border: 8px solid black;
 }
 
 .cross {
     position: relative;
-    height: 90px;
-    width: 90px;
+    height: 80px;
+    width: 80px;
     transform: rotate(45deg);
 }
 
 .cross::before, .cross::after {
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: black;
 }
 
 .cross::before {
     left: 50%;
-    width: 30%;
-    margin-left: -15%;
+    width: 10%;
+    margin-left: -5%;
     height: 100%;
 }
 
 .cross::after {
     top: 50%;
-    height: 30%;
-    margin-top: -15%;
+    height: 10%;
+    margin-top: -5%;
     width: 100%;
 }

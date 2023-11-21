@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Tic Tac Toe</title>
 </head>
+
 <body>
     <div class="container">
         <div class="header-info">
-            <div class="player-turn">Turn: <span id="player">Player 1</span></div>
-            <button id="start">Start New Game</button>
+            <h4 id="turno" class="player-turn"></h4>
         </div>
         <div class="gameboard" id="gameboard">
             <div class="cells"></div>
@@ -23,8 +24,9 @@
             <div class="cells"></div>
             <div class="cells"></div>
         </div>
-        <div class="playerwin" id="playerwin"></div>
+        <button class="start" id="start">Restart</button>
     </div>
-<script src="main.js"></script>
+    <script src="main.js" type="module"></script>
 </body>
+
 </html>

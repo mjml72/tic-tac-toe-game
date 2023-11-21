@@ -1,6 +1,10 @@
+const selectionplayer = document.getElementById("selection-player");
 const cells = document.getElementsByClassName("cells");
-const player = document.getElementById("player");
+const turno = document.getElementById("turno");
 const startBtn = document.getElementById("start");
+const stringCircle = "circle";
+const stringCross = "cross";
+
 let countPlay = 0;
 const winningCombos = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -8,104 +12,100 @@ const winningCombos = [
     [0, 4, 8], [2, 4, 6]
 ];
 let gameOver = false;
+let winner = false;
 
-startBtn.addEventListener("click", ()=>{
+startBtn.addEventListener("click", () => {
     location.reload();
 });
 
-
-
-function start() {
-
-    for (let i = 0; i < cells.length; i++) {
-
-    
-        cells[i].addEventListener("click", () => {
-            
-            if(gameOver === true){
+function startGame() {
+    playerTurn("cross");
+    for (let index = 0; index < cells.length; index++) {
+        cells[index].addEventListener("click", () => {
+            if (gameOver === true) {
                 return;
             }
-            
-            
-            let circle = document.createElement("div");
-            circle.classList.add("circle");
-            let cross = document.createElement("div");
-            cross.classList.add("cross");
-            
-            
-            if (cells[i].innerHTML !== "") {
-                return;
+            if (cells[index].innerHTML === "") {
+                play(index);
             }
-            
-            countPlay++;
-            
-            if (countPlay % 2 !== 0) {
-                cells[i].appendChild(circle);
-                checkWinCircle();
-            } else {
-                cells[i].appendChild(cross);
-                checkWinCross();
-            }
-            
-            playerTurn();
+
         });
     }
-    
-}
 
-function playerTurn() {
-    
-    player.innerText =  player.innerText === "Player 1" ? "Player 2" : "Player 1";
 }
 
 
-function checkWinCircle() {
+function play(index) {
+
+    let playerturn = stringCross;
+    let check = stringCircle;
+
     
+    let circle = document.createElement("div");
+    circle.classList.add("circle");
+    let cross = document.createElement("div");
+    cross.classList.add("cross");
+    countPlay++;
+
+    if (countPlay % 2 !== 0) {
+        cells[index].appendChild(cross);
+        playerturn = stringCircle;
+        check = stringCross;
+
+    } else {
+        cells[index].appendChild(circle);
+        playerturn = stringCross;
+        check = stringCircle;
+
+    }
+    playerTurn(playerturn);
+    checkWin(check);
+
+    if (countPlay === 9 && winner === false) {
+        gameOver = true;
+        turno.innerText = `¡EMPATE!`;    
+    }
+}
+
+function playerTurn(playerturn) {
+    turno.innerText = "Turno: ";
+    if (playerturn === "cross") {
+        turno.innerText += " X";
+    } else {
+        turno.innerText += " O";
+    }
+}
+
+function checkWin(player) {
     winningCombos.forEach(array => {
         let count = 0;
         array.forEach(element => {
-            if (cells[element].firstElementChild?.classList.contains("circle")) {
+            if (cells[element].firstElementChild?.classList.contains(player)) {
                 count++;
             }
             if (count === 3) {
-                win("Player 1");
+                winner = true;
+                win(player);
             };
         });
 
     });
-
-
-}
-
-
-
-
-
-function checkWinCross() {
-    
-    winningCombos.forEach(array => {
-        let count = 0;
-        array.forEach(element => {
-            if (cells[element].firstElementChild?.classList.contains("cross")) {
-                count++;
-            }
-            if (count === 3) {
-                win("Player 2");
-            };
-        });
-
-    });
-
 
 }
 
 function win(player) {
-
-    const playerwin = document.getElementById("playerwin");
-    playerwin.style.visibility = "visible";
-    playerwin.innerText = `${player} Wins!!!!`;
+    
+    let title = "GANADOR";
+    let winner = "";
+    if (player === "cross") {
+        winner = " X ";
+    } else if (player === "circle") {
+        winner = " O ";
+    }
+    turno.innerText = `${title}
+     ${winner}`;
     gameOver = true;
-  
+
 }
 
-start();
+startGame();
